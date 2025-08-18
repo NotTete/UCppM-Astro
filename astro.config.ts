@@ -8,4 +8,5 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()]
     },
+    site: "https://nottete.github.io",
 });

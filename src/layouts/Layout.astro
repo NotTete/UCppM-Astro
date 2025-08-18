@@ -1,6 +1,8 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import Navbar from "../components/Navbar.astro";
+import ShaderBackground from "../components/ShaderBackground.astro";
+
 import "../styles/global.css";
 import "@fontsource-variable/libre-franklin";
 ---
@@ -10,11 +12,12 @@ import "@fontsource-variable/libre-franklin";
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<base href={import.meta.env.BASE_URL} />
+		<link rel="icon" type="image/svg+xml" href="./favicon.svg" />
 		<title>Astro Basics</title>
 		<link
 			rel="preload"
-			href="/fonts/Inter/InterVariable.woff2"
+			href=`${import.meta.env.BASE_URL}fonts/Inter/InterVariable.woff2`
 			as="font"
 			type="font/woff2"
 			crossorigin
@@ -23,6 +26,7 @@ import "@fontsource-variable/libre-franklin";
 	</head>
 	<body>
 		<Navbar />
+		<ShaderBackground />
 		<slot />
 	</body>
 </html>

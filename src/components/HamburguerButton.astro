@@ -1,18 +1,19 @@
 ---
-const { class: className, ...rest } = Astro.props;
+const { class: className, id, ...rest } = Astro.props;
 ---
 
 <button
     class="flex flex-col gap-2 group md:hidden"
-    id="menu-toggle"
+    id={id}
     aria-expanded="false"
-    aria-label="button-menu"
+    aria-label="Button to toggle menu"
+    {...rest}
 >
     <span
         class="hamburger-bar group-aria-[expanded='true']:translate-y-[10px] group-aria-[expanded='true']:rotate-45"
     ></span>
     <span
-        class="hamburger-bar transition-opacity ease-in-out group-aria-[expanded='true']:opacity-0"
+        class="hamburger-bar group-aria-[expanded='true']:scale-x-0 group-aria-[expanded='true']:-translate-x-[15px] group-aria-[expanded='true']:opacity-0"
     ></span>
     <span
         class="hamburger-bar group-aria-[expanded='true']:-translate-y-[10px] group-aria-[expanded='true']:-rotate-45"
@@ -23,6 +24,6 @@ const { class: className, ...rest } = Astro.props;
     @reference "tailwindcss";
 
     .hamburger-bar {
-        @apply block h-0.5 w-8 origin-center rounded-full bg-white/80 transition-transform  ease-in-out duration-150;
+        @apply block h-0.5 w-8 origin-center rounded-full bg-white/80 transition-all  ease-in-out duration-500;
     }
 </style>

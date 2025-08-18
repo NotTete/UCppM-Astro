@@ -1,0 +1,27 @@
+---
+
+
+---
+<canvas id="background-canvas">
+    
+</canvas>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById("background-canvas");
+
+        if (!(canvas instanceof HTMLCanvasElement)) {
+            console.error("Couldn't find background canvas.");
+            return;
+        }
+
+        const gl = canvas.getContext("webgl2");
+
+        if(gl == null) {
+            console.log("WebGL not supported");
+            return;
+        }
+
+        
+    });
+</script>

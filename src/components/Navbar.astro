@@ -4,29 +4,28 @@ import HamburguerButton from "./HamburguerButton.astro";
 import discordLogo from "../assets/icons/discord.svg";
 import instagramLogo from "../assets/icons/instagram.svg";
 import githubLogo from "../assets/icons/github.svg";
-
 import { discordLink, instagramLink, githubLink } from "../data/links.ts";
 
 const navbarMenu = [
     {
         name: "¿Quienes somos?",
-        link: "/#about",
+        link: `./#about`,
     },
     {
         name: "Actividades",
-        link: "/activities",
+        link: "./activities",
     },
     {
         name: "Recursos",
-        link: "/resources",
+        link: "./resources",
     },
     {
         name: "Contacto",
-        link: "/contact",
+        link: "./contact",
     },
     {
         name: "FAQ",
-        link: "/faq",
+        link: "./faq",
     },
 ];
 
@@ -49,9 +48,9 @@ const socialMenu = [
 ];
 ---
 
-<header class="fixed flex justify-center w-full bg-stone-900 z-50">
+<header class="fixed w-full bg-stone-900 z-50">
     <nav
-        class="flex md:flex-row flex-col justify-between w-full py-2.5 gap-y-2.5 mx-auto max-w-screen-lg items-center overflow-hidden"
+        class="flex md:flex-row flex-col justify-between w-full py-2.5 gap-y-2.5 mx-auto max-w-screen-lg items-center overflow-hidden [&.open]:max-h-96 transition-[max-height] ease-in-out duration-500 max-h-16 "
         id="nav-menu"
     >
         <ul
@@ -63,7 +62,7 @@ const socialMenu = [
                 UCppM
             </li>
             <li>
-                <HamburguerButton />
+                <HamburguerButton id="menu-toggle"/>
             </li>
         </ul>
 
@@ -89,7 +88,7 @@ const socialMenu = [
                                 loading="eager"
                                 src={elem.img}
                                 alt={elem.name}
-                                class="icon"
+                                class="icon w-auto h-[1.5em]"
                             />
                         </a>
                     </li>
@@ -97,6 +96,7 @@ const socialMenu = [
             }
         </ul>
     </nav>
+    <div class="[&.open]:block hidden fixed w-full h-full h- z-[49]" id="overlay"></div>
 </header>
 
 <style>
@@ -105,15 +105,6 @@ const socialMenu = [
     .icon {
         filter: invert(100%) sepia(2%) saturate(140%) hue-rotate(192deg)
             brightness(107%) contrast(78%);
-        @apply w-auto h-[1.5em];
-    }
-
-    nav {
-        @apply transition-[max-height] ease-in-out duration-500 max-h-16;
-    }
-
-    nav.open {
-        @apply max-h-96;
     }
 </style>
 
@@ -121,22 +112,29 @@ const socialMenu = [
     document.addEventListener("DOMContentLoaded", () => {
         const button = document.getElementById("menu-toggle");
         const menu = document.getElementById("nav-menu");
+        const overlay = document.getElementById("overlay");
 
-        if (!button || !menu) return;
+        if (!button || !menu || !overlay) return;
+
+        function toggleMenu() {
+            const expanded = button?.getAttribute("aria-expanded") === "true";
+            button?.setAttribute("aria-expanded", (!expanded).toString());
+            menu?.classList.toggle("open");
+            overlay?.classList.toggle("open");
+        }
+
+        function closeMenu() {
+            button?.setAttribute("aria-expanded", "false");
+            menu?.classList.remove("open");
+            overlay?.classList.remove("open");
+        }
 
         const styles = getComputedStyle(document.documentElement);
         const breakPoint = styles.getPropertyValue("--breakpoint-md");
         const mediaQuery = window.matchMedia(`(width < ${breakPoint})`);
 
-        button.addEventListener("click", () => {
-            const expanded = button.getAttribute("aria-expanded") === "true";
-            button.setAttribute("aria-expanded", (!expanded).toString());
-            menu.classList.toggle("open");
-        });
-
-        mediaQuery.addEventListener("change", (e) => {
-            button.setAttribute("aria-expanded", "false");
-            menu.classList.remove("open");
-        });
+        button.addEventListener("click", toggleMenu);
+        overlay.addEventListener("click", closeMenu);
+        mediaQuery.addEventListener("change", closeMenu);
     });
 </script>
