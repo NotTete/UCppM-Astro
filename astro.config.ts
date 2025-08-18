@@ -9,13 +9,5 @@ export default defineConfig({
         plugins: [tailwindcss()]
     },
 
-    experimental: {
-        fonts: [
-            {
-                
-            }
-        ]
-    }
-
     site: "https://NotTete.github.io",
 });
