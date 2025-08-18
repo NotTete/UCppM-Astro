@@ -1,0 +1,9 @@
+---
+import ucppmLogo from '../assets/logo.png';
+import Image from 'astro/components/Image.astro';
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<Image class={className + " drop-shadow-md/100"} src={ucppmLogo} alt="UcppM logo" {...rest} >
+    

@@ -1,0 +1,142 @@
+---
+import { Image } from "astro:assets";
+import HamburguerButton from "./HamburguerButton.astro";
+import discordLogo from "../assets/icons/discord.svg";
+import instagramLogo from "../assets/icons/instagram.svg";
+import githubLogo from "../assets/icons/github.svg";
+
+import { discordLink, instagramLink, githubLink } from "../data/links.ts";
+
+const navbarMenu = [
+    {
+        name: "¿Quienes somos?",
+        link: "/#about",
+    },
+    {
+        name: "Actividades",
+        link: "/activities",
+    },
+    {
+        name: "Recursos",
+        link: "/resources",
+    },
+    {
+        name: "Contacto",
+        link: "/contact",
+    },
+    {
+        name: "FAQ",
+        link: "/faq",
+    },
+];
+
+const socialMenu = [
+    {
+        name: "instagram",
+        img: instagramLogo,
+        link: instagramLink,
+    },
+    {
+        name: "discord",
+        img: discordLogo,
+        link: discordLink,
+    },
+    {
+        name: "github",
+        img: githubLogo,
+        link: githubLink,
+    },
+];
+---
+
+<header class="fixed flex justify-center w-full bg-stone-900 z-50">
+    <nav
+        class="flex md:flex-row flex-col justify-between w-full py-2.5 gap-y-2.5 mx-auto max-w-screen-lg items-center overflow-hidden"
+        id="nav-menu"
+    >
+        <ul
+            class="flex flex-row justify-between md:w-auto w-full items-center px-2.5"
+        >
+            <li
+                class="text-2xl font-semibold flex items-center justify-center px-2.5 duration-150 ease-in hover:scale-[110%] transition-transform md:py-0 py-1.5"
+            >
+                UCppM
+            </li>
+            <li>
+                <HamburguerButton />
+            </li>
+        </ul>
+
+        <!-- Menú principal -->
+        <ul
+            class="flex md:flex-row flex-col gap-1 h-auto items-center justify-center w-full md:w-auto"
+        >
+            {
+                navbarMenu.map((elem) => (
+                    <li class="transition-colors duration-150 ease-in md:rounded-4xl md:w-auto w-full text-center p-2.5 active:bg-stone-800 hover:bg-stone-800">
+                        <a href={elem.link}>{elem.name}</a>
+                    </li>
+                ))
+            }
+        </ul>
+        <!-- Redes sociales y links -->
+        <ul class="flex flex-row items-center justify-center text-md">
+            {
+                socialMenu.map((elem) => (
+                    <li class="transition-colors duration-150 ease-in rounded-4xl p-2.5 hover:bg-stone-800 active:bg-stone-800">
+                        <a href={elem.link}>
+                            <Image
+                                loading="eager"
+                                src={elem.img}
+                                alt={elem.name}
+                                class="icon"
+                            />
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </nav>
+</header>
+
+<style>
+    @reference "tailwindcss";
+
+    .icon {
+        filter: invert(100%) sepia(2%) saturate(140%) hue-rotate(192deg)
+            brightness(107%) contrast(78%);
+        @apply w-auto h-[1.5em];
+    }
+
+    nav {
+        @apply transition-[max-height] ease-in-out duration-500 max-h-16;
+    }
+
+    nav.open {
+        @apply max-h-96;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const button = document.getElementById("menu-toggle");
+        const menu = document.getElementById("nav-menu");
+
+        if (!button || !menu) return;
+
+        const styles = getComputedStyle(document.documentElement);
+        const breakPoint = styles.getPropertyValue("--breakpoint-md");
+        const mediaQuery = window.matchMedia(`(width < ${breakPoint})`);
+
+        button.addEventListener("click", () => {
+            const expanded = button.getAttribute("aria-expanded") === "true";
+            button.setAttribute("aria-expanded", (!expanded).toString());
+            menu.classList.toggle("open");
+        });
+
+        mediaQuery.addEventListener("change", (e) => {
+            button.setAttribute("aria-expanded", "false");
+            menu.classList.remove("open");
+        });
+    });
+</script>
