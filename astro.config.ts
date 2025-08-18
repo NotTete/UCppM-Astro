@@ -8,5 +8,14 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()]
     },
+
+    experimental: {
+        fonts: [
+            {
+                
+            }
+        ]
+    }
+
     site: "https://NotTete.github.io",
 });
