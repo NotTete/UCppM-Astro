@@ -36,8 +36,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
-        id: detect-package-manager
         uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+        id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
