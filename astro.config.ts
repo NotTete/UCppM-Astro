@@ -8,6 +8,6 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()]
     },
-
+    base: "/UCppM-Astro",
     site: "https://NotTete.github.io",
 });
