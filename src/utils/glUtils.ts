@@ -10,7 +10,7 @@ export function createShader(gl: WebGL2RenderingContext, type: GLenum, source) {
 
     console.log(gl.getShaderInfoLog(shader));
     gl.deleteShader(shader);
-}
+} 
 
 export function createProgram(gl: WebGL2RenderingContext, vertexShader: string, fragmentShader: string) : WebGLProgram | null {
     var program: WebGLProgram = gl.createProgram();
