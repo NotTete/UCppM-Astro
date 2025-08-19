@@ -57,9 +57,11 @@ const socialMenu = [
             class="flex flex-row justify-between md:w-auto w-full items-center px-2.5"
         >
             <li
-                class="text-2xl font-semibold flex items-center justify-center px-2.5 duration-150 ease-in hover:scale-[110%] transition-transform md:py-0 py-1.5"
-            >
+                class="text-2xl font-semibold flex items-center justify-center px-2.5 duration-150 ease-in active-hover:scale-[110%] transition-transform md:py-0 py-1.5 active-hover:text-primary active-hover:text-shadow-[0px_0px_20px_var(--color-primary)]"
+            ><a href={`${import.meta.env.BASE_URL}`}>
                 UCppM
+            </a>
+                
             </li>
             <li>
                 <HamburguerButton id="menu-toggle"/>
@@ -72,7 +74,7 @@ const socialMenu = [
         >
             {
                 navbarMenu.map((elem) => (
-                    <li class="transition-colors duration-150 ease-in md:rounded-4xl md:w-auto w-full text-center p-2.5 active-hover:bg-bg-light">
+                    <li class=" md:rounded-4xl md:w-auto w-full text-center p-2.5 bg-transparent border-text active-hover:shadow-[0px_0px_20px_var(--color-primary)] active-hover:bg-primary  ease-in-out duration-150 transition-color">
                         <a href={elem.link}>{elem.name}</a>
                     </li>
                 ))
@@ -82,7 +84,7 @@ const socialMenu = [
         <ul class="flex flex-row items-center justify-center text-md">
             {
                 socialMenu.map((elem) => (
-                    <li class="transition-colors duration-150 ease-in rounded-4xl p-2.5 active-hover:bg-bg-light">
+                    <li class="transition-colors duration-150 ease-in rounded-4xl p-2.5 active-hover:shadow-[0px_0px_20px_var(--color-primary)] active-hover:bg-primary  ease-in-out duration-150 transition-color">
                         <a href={elem.link}>
                             <Image
                                 loading="eager"
