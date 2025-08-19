@@ -24,5 +24,6 @@ const { class: className, id, ...rest } = Astro.props;
     @reference "tailwindcss";
 
     .hamburger-bar {
-        @apply block h-0.5 w-8 origin-center rounded-full bg-white/80 transition-all  ease-in-out duration-500
+        @apply block h-0.5 w-8 origin-center rounded-full bg-white/80 transition-all  ease-in-out duration-500 hover:shadow-[0px_0px_20px_var(--color-primary)];
+    }
 </style>
