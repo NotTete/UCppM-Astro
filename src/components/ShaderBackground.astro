@@ -2,7 +2,7 @@
 
 ---
 
-<canvas id="background-canvas" class="fixed w-screen h-screen z-[-1] bg-blue-900"> </canvas>
+<canvas id="background-canvas" class="fixed w-screen h-screen z-[-1] bg-cyan-950"> </canvas>
 
 <script>
     import { compileShader } from "../utils/glUtils";
@@ -52,15 +52,14 @@
         vec2 dir = normalize(vec2(1.0, 2.0));
         float zoom = 2.5;
 
-        float t = u_time * 0.1;
+        float t = u_time * 0.2;
 
-        float n = sin(noise(noise(noise(pos * zoom + dir * t) * uv * uv) * uv * uv));
+        float n = sin(noise(noise(noise(pos * zoom + dir * t) + uv ) + uv));
         float div = 8.;
         
         float m = floor(div * n) / div;
         float k = n - m;
-        vec3 color = mix(c1, c2, m);
-        color = mix(color, color * 1.2, k * div);
+        vec3 color = mix(c1, c2, m + k * 0.1);
         outColor = vec4(color, 1.0);
     }`;
 
@@ -147,7 +146,7 @@
             setTimeout(function () {
                 if (!gl) return;
 
-                resizeCanvasToDisplaySize(gl.canvas);
+                resizeCanvasToDisplaySize(gl.canvas as HTMLCanvasElement);
                 requestAnimationFrame(drawScene);
 
                 now *= 0.001; // convert to seconds
