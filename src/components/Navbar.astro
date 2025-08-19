@@ -72,7 +72,7 @@ const socialMenu = [
         >
             {
                 navbarMenu.map((elem) => (
-                    <li class="transition-colors duration-150 ease-in md:rounded-4xl md:w-auto w-full text-center p-2.5 active:bg-stone-800 hover:bg-stone-800">
+                    <li class="transition-colors duration-150 ease-in md:rounded-4xl md:w-auto w-full text-center p-2.5 active:bg-stone-800 hover:bg-bg-light">
                         <a href={elem.link}>{elem.name}</a>
                     </li>
                 ))
@@ -82,7 +82,7 @@ const socialMenu = [
         <ul class="flex flex-row items-center justify-center text-md">
             {
                 socialMenu.map((elem) => (
-                    <li class="transition-colors duration-150 ease-in rounded-4xl p-2.5 hover:bg-stone-800 active:bg-stone-800">
+                    <li class="transition-colors duration-150 ease-in rounded-4xl p-2.5 hover:bg-bg-light active:bg-bg-light">
                         <a href={elem.link}>
                             <Image
                                 loading="eager"

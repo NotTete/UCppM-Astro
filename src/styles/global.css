@@ -8,5 +8,5 @@
     --color-text: var(--color-stone-50);
     --color-text-muted: var(--color-stone-300);
     --color-border: var(--color-gray-700);
-
+    --color-primary: var(--color-emerald-400);
 }
