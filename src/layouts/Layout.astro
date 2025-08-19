@@ -1,7 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import Navbar from "../components/Navbar.astro";
-import ShaderBackground from "../components/ShaderBackground.astro";
 
 import "../styles/global.css";
 ---
@@ -24,13 +23,14 @@ import "../styles/global.css";
 		<ClientRouter />
 	</head>
 	<body>
-		<ShaderBackground />
 		<Navbar />
 		<slot />
 	</body>
 </html>
 
 <style>
+	@reference "../styles/global.css";
+
 	:root {
 		font-family: "Inter", monospace;
 	}
@@ -41,13 +41,14 @@ import "../styles/global.css";
 	}
 	html,
 	body {
-		@apply subpixel-antialiased;
+		@apply subpixel-antialiased bg-bg-dark text-text;
 		margin: 0;
 		padding: 0;
 		width: 100%;
 		height: 100%;
-		color: whitesmoke;
-		z-index: -1;
 	}
 
+	* {
+		box-sizing: border-box;
+	}
 </style>

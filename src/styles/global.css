@@ -1,2 +1,12 @@
 @import "tailwindcss";
 @import "./fonts/inter.css";
+
+@theme {
+    --color-bg-dark: var(--color-gray-950);
+    --color-bg: var(--color-gray-900);
+    --color-bg-light: var(--color-gray-800);
+    --color-text: var(--color-stone-50);
+    --color-text-muted: var(--color-stone-300);
+    --color-border: var(--color-gray-700);
+
+}

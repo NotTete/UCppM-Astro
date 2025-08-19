@@ -48,7 +48,7 @@ const socialMenu = [
 ];
 ---
 
-<header class="fixed w-full bg-stone-900 z-50">
+<header class="fixed w-full   bg-bg-dark border-border border-b-1 z-50">
     <nav
         class="flex md:flex-row flex-col justify-between w-full py-2.5 gap-y-2.5 mx-auto max-w-screen-lg items-center overflow-hidden [&.open]:max-h-96 transition-[max-height] ease-in-out duration-500 max-h-16 "
         id="nav-menu"
@@ -100,7 +100,8 @@ const socialMenu = [
 </header>
 
 <style>
-    @reference "tailwindcss";
+    @reference "../styles/global.css";
+
 
     .icon {
         filter: invert(100%) sepia(2%) saturate(140%) hue-rotate(192deg)

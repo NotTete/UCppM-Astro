@@ -1,11 +1,15 @@
 ---
 import Logo from "./Logo.astro";
+
+import backgroundImage from "../assets/homepage-bg.webp";
+import { Image } from "astro:assets";
 ---
 
-<div class="flex w-screen h-dvh justify-center items-center md:flex-row flex-col-reverse">
+<div class="flex w-full h-dvh justify-center items-center md:flex-row flex-col-reverse border-b-border border-b-1">
+	<Image src={backgroundImage} alt="Background" class="absolute w-full h-full object-cover opacity-10 brightness-125 saturate-0 blur-[1px] object-[50%_25%" loading="eager"/>
 	<div class="text-center flex justify-center flex-col gap-4">
-		<h1 class="xl:text-[10rem] sm:text-9xl text-8xl text-shadow-lg/100 font-semibold">UcppM</h1>
-		<h2 class="xl:text-2xl sm:text-lg text-smfont-light">
+		<h1 class="xl:text-[10rem] sm:text-9xl text-8xl text-shadow-lg/100 font-semibold">UCppM</h1>
+		<h2 class="xl:text-2xl sm:text-lg text-sm font-light text-text-muted">
 			Asociación de Programación Competitiva de la<br/>
 			Universidad Complutense de Madrid
 		</h2>
