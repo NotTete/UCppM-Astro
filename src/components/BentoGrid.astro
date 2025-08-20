@@ -1,0 +1,33 @@
+---
+interface Props {
+    columns: number;
+    rows: number;
+    class?: string,
+}
+
+const defaultStyle = "grid justify-center items-center gap-5";
+
+const { columns, rows, class: className } = Astro.props;
+
+if (!Number.isInteger(columns)) {
+	throw new Error("Columns must be integers.");
+}
+
+if (!Number.isInteger(rows)) {
+	throw new Error("Rows must be integers.");
+}
+
+const colStr = `grid-cols-${columns}`;
+const rowStr = `grid-rows-${rows}`;
+
+const extraClasses = [
+    defaultStyle, colStr, rowStr, className
+].join(" ");
+
+
+
+---
+
+<section class={extraClasses}>
+    <slot/>
+</section>

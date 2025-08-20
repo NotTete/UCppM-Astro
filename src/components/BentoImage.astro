@@ -1,0 +1,19 @@
+---
+import BentoBase from "./BentoBase.astro";
+import Image from "astro/components/Image.astro";
+interface Props {
+    src: ImageMetadata;
+    alt: string;
+    position: [number, number];
+    span?: [number, number];
+}
+
+const { src, alt, ...rest } = Astro.props;
+---
+
+<BentoBase
+    class=" object-center h-full"
+    {...rest}
+>
+    <Image src={src} alt={alt} class="rounded-4xl w-full h-full object-center object-cover"/>
+</BentoBase>

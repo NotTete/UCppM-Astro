@@ -5,137 +5,136 @@ import Layout from "../layouts/Layout.astro";
 import DaniSwercImage from "../assets/swerc-dani.webp";
 import NoahCodeforcesImage from "../assets/noah-codeforces.webp";
 import URJCImage from "../assets/urjc.webp";
-import { ucmLink } from "../data/links";
+import CodeImage from "../assets/kmp-code.webp";
 
+import { ucmLink } from "../data/links";
+import BentoText from "../components/BentoText.astro";
+import BentoGrid from "../components/BentoGrid.astro";
+import BentoImage from "../components/BentoImage.astro";
 ---
 
 <Layout>
-    <a class="absolute top-0" name="home"></a>
+    <a class="absolute top-0" id="home"></a>
     <HomeTitle />
     <div class="w-full flex flex-col items-center justify-center my-20">
-        <h1 class="font-bold text-5xl sm:text-6xl py-5 text-center ease-in-out duration-300 transition-all hover:scale-105 hover:text-shadow-[0px_0px_20px_var(--color-primary)]  active:scale-105 hover-always:text-shadow-[0px_0px_20px_var(--color-primary)] hover-always:text-primary"  id="about">¿Quiénes somos?</h1>
-        <div
-            class="max-w-5xl m-5 justify-center items-center columns-1 md:columns-2 gap-5 :ch"
-        >
-            <div
-                class="gap-5 flex flex-col text-xl p-5 border-1 rounded-xl border-border bg-bg mb-5"
-            >
+        <h1 class="bento-title">¿Quiénes somos?</h1>
+        <a class="relative top-[-175px]" style="visibility: hidden;" id="about"
+        ></a>
+        <BentoGrid columns={2} rows={9} class="max-w-5xl m-5">
+            <BentoText position={[1, 1]} span={[1, 2]}>
                 <p>
                     Somos un grupo de estudiantes de la <strong
-                        ><a href={ ucmLink }
-                            >Universidad Complutense de Madrid</a
+                        ><a href={ucmLink}>Universidad Complutense de Madrid</a
                         ></strong
                     > apasionados por la programación competitiva.
                 </p>
-            </div>
-            <Image
+            </BentoText>
+            <BentoImage
                 src={DaniSwercImage}
-                alt="Image at SWERC competition"
-                class="rounded-xl w-full"
+                alt="UCppM team at SWERC competition"
+                position={[2, 1]}
+                span={[1, 6]}
             />
-            <Image
+            <BentoImage
                 src={NoahCodeforcesImage}
                 alt="Person in a Codeforces virtual contest"
-                class="rounded-xl mt-5 w-full"
+                position={[1, 3]}
+                span={[1, 7]}
             />
-            <div
-                class="gap-5 flex flex-col text-xl p-5 border-1 rounded-xl border-border bg-bg mt-5"
-            >
+            <BentoText position={[2, 7]} span={[1, 3]}>
                 <p>
-                    Nos reunimos para <strong>resolver problemas</strong>, compartir
-                    conocimientos a través de <strong>charlas</strong>, mejorar nuestras
-                    habilidades y participar en <strong
+                    Nos reunimos para <strong>resolver problemas</strong>,
+                    compartir conocimientos a través de <strong>charlas</strong
+                    >, mejorar nuestras habilidades y participar en <strong
                         >competiciones internacionales</strong
-                    >. Además de <strong>organizar  concursos</strong> dentro de
-                    la Universidad.
+                    >. Además de <strong>organizar concursos</strong> dentro de la
+                    Universidad.
                 </p>
-            </div>
-        </div>
-        <!-- <div
-            class="gap-5 flex flex-col text-xl p-5 border-1 rounded-xl border-border bg-bg"
-        >
-            <h1 class="font-bold text-3xl text-center">
-                ¿Qué tipo de problemas resolvemos?
-            </h1>
-            <p>
-                Resolvemos problemas lógico-matemáticos diseñando y programando
-                algoritmos. Estos algoritmos son secuencias de pasos que
-                garantizan una solución precisa y eficiente del problema.
-            </p>
-            <p>
-                Entre los problemas que resolvemos podemos encontrar tareas como
-                contar cuántas veces aparece una palabra específica dentro de un
-                texto largo, o guiar a un robot a través de un laberinto hasta
-                que logre encontrar la salida.
-            </p>
-            <p>
-                En las competiciones, nuestro objetivo es resolver la mayor
-                cantidad de estos problemas en un tiempo limitado. No solo se
-                trata de un reto matemático, sino también de una prueba de
-                agilidad mental y velocidad.
-            </p>
-        </div>
+            </BentoText>
+        </BentoGrid>
+        <h1 class="bento-title">¿Qué problemas resolvemos?</h1>
+        <BentoGrid columns={2} rows={6} class="max-w-5xl m-5">
+            <BentoText position={[2, 1]} span={[1, 2]}>
+                <p>
+                    Resolvemos <strong>problemas lógico-matemáticos</strong>
+                    diseñando y <strong
+                        >programando algoritmos precisos y eficientes</strong
+                    >. Estos algoritmos son secuencias de pasos que garantizan
+                    una solución <strong></strong> del problema.
+                </p>
+            </BentoText>
+            <BentoImage
+                src={URJCImage}
+                alt="Participants competing in a URJC tournament"
+                position={[1, 1]}
+                span={[1, 5]}
+            />
+            <BentoImage
+                src={CodeImage}
+                alt="Code in C++ implementing counting word algrithm with KMP"
+                position={[2, 3]}
+                span={[1, 5]}
+            />
+            <BentoText position={[1, 6]} span={[1, 2]}>
+                <p>
+                    Entre los problemas que resolvemos podemos encontrar tareas
+                    como contar cuántas veces aparece una palabra específica
+                    dentro de un texto largo, o guiar a un robot a través de un
+                    laberinto hasta que logre encontrar la salida.
+                </p>
+            </BentoText>
+        </BentoGrid>
+        <h1 class="bento-title">¿Por qué deberías unirte?</h1>
+        <BentoGrid columns={2} rows={7} class="max-w-5xl m-5">
+            <BentoText position={[2, 1]} span={[1, 1]}>
+                <p>
+                    El principal motivo es porque es divertido ;) . Además
+                    conocerás a mucha gente interesante e incluso harás nuevos
+                    amigos.
+                </p>
+            </BentoText>
+            <BentoImage
+                src={URJCImage}
+                alt="Participants competing in a URJC tournament"
+                position={[1, 1]}
+                span={[1, 3]}
+            />
+            <BentoImage
+                src={CodeImage}
+                alt="Code in C++ implementing counting word algrithm with KMP"
+                position={[2, 2]}
+                span={[1, 4]}
+            />
+            <BentoText position={[1, 4]} span={[1, 2]}>
+                <p>
+                    Por otro lado, resolver esta clase de problemas es muy útil
+                    tanto para algunas asignaturas de la carrera como para las
+                    entrevistas de trabajo en diversas empresas. Así que, no
+                    solo te lo pasarás bien, sino que adquirirás habilidades que
+                    te serán valiosas en el futuro.
+                </p>
+            </BentoText>
+            <BentoText position={[1, 6]} span={[2, 1]}>
+                <p class="text-center">
+                    Si te ha llamado la atención <strong
+                        ><a href="{{ .Site.Params.url.discord }}">
+                            únete a nuestro Discord</a
+                        ></strong
+                    >, además si eres estudiante de la <strong
+                        ><a href="{{ .Site.Params.url.fdi }}"
+                            >Facultad de informática</a
+                        ></strong
+                    > únete a la asociación, sin ningún compromiso, rellenando este
+                    <strong
+                        ><a href="{{ .Site.Params.url.formulario }}"
+                            >formulario</a
+                        ></strong
+                    >.
+                </p>
+            </BentoText>
+        </BentoGrid>
+        <!--
 
-        <div
-            class="gap-5 flex flex-col text-xl p-5 border-1 rounded-xl border-border bg-bg"
-        >
-            <h1 class="font-bold text-3xl text-center">
-                ¿Por qué deberías unirte?
-            </h1>
-            <p>
-                El principal motivo es porque es divertido ;) . Además conocerás
-                a mucha gente interesante e incluso harás nuevos amigos.
-            </p>
-            <p>
-                Por otro lado, resolver esta clase de problemas es muy útil
-                tanto para algunas asignaturas de la carrera como para las
-                entrevistas de trabajo en diversas empresas. Así que, no solo te
-                lo pasarás bien, sino que adquirirás habilidades que te serán
-                valiosas en el futuro.
-            </p>
-        </div>
-        <Image src={URJCImage} alt="Participants in tournament at URJC" /> -->
-        <!-- <div class="home-container">
-                <div class="home-text">
-                    <h1 class="text-center font-bold text-6xl" id="about">¿Quiénes somos?</h1>
-                    <p>
-                        Somos un grupo de estudiantes de la <em
-                            ><a href="{{ .Site.Params.url.ucm }}"
-                                >Universidad Complutense de Madrid</a
-                            ></em
-                        > apasionados por la programación competitiva. Nos reunimos
-                        para <b>resolver problemas</b>, compartir conocimientos
-                        a través de <b>charlas</b>, mejorar nuestras habilidades
-                        y participar en <b>competiciones internacionales</b>.
-                        También organizamos y damos apoyo a concursos dentro de
-                        la Universidad.
-                    </p>
-                </div>
-            </div>
-            <div class="home-container">
-                <div class="home-text">
-                    <h1>¿Qué tipo de problemas resolvemos?</h1>
-                    <p>
-                        Resolvemos problemas lógico-matemáticos diseñando y
-                        programando algoritmos. Estos algoritmos son secuencias
-                        de pasos que garantizan una solución precisa y eficiente
-                        del problema.
-                    </p>
-                    <p>
-                        Entre los problemas que resolvemos podemos encontrar
-                        tareas como contar cuántas veces aparece una palabra
-                        específica dentro de un texto largo, o guiar a un robot
-                        a través de un laberinto hasta que logre encontrar la
-                        salida.
-                    </p>
-                    <p>
-                        En las competiciones, nuestro objetivo es resolver la
-                        mayor cantidad de estos problemas en un tiempo limitado.
-                        No solo se trata de un reto matemático, sino también de
-                        una prueba de agilidad mental y velocidad.
-                    </p>
-                </div>
-            </div>
             <div class="home-text">
                 <h1>¿Por qué deberías unirte?</h1>
                 <p>
@@ -179,11 +178,13 @@ import { ucmLink } from "../data/links";
 </Layout>
 
 <style>
-	@reference "../styles/global.css";
+    @reference "../styles/global.css";
 
     strong {
         @apply text-primary ease-in-out duration-300 transition-all hover-always:text-shadow-[0px_0px_5px_var(--color-primary)];
-
     }
 
+    .bento-title {
+        @apply font-bold text-5xl sm:text-6xl py-5 text-center ease-in-out duration-300 transition-all hover:scale-105 hover:text-shadow-[0px_0px_20px_var(--color-primary)] active:scale-105 hover-always:text-shadow-[0px_0px_20px_var(--color-primary)] hover-always:text-primary;
+    }
 </style>

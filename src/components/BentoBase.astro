@@ -1,0 +1,32 @@
+---
+interface Props {
+    position: [number, number];
+    span?: [number, number];
+    class?: string;
+}
+
+const { class: className, position, span, ...rest } = Astro.props;
+
+if (!Number.isInteger(position[0]) || !Number.isInteger(position[1])) {
+	throw new Error("Position values must be integers.");
+}
+
+
+if (span && (!Number.isInteger(span[0]) || !Number.isInteger(span[1]))) {
+	throw new Error("Span values must be integers.");
+}
+
+const colPosition = `col-start-${position[0]}`;
+const rowPosition = `row-start-${position[1]}`;
+
+const colSpan = !span ? "col-span-1" : `col-span-${span[0]}`;
+const rowSpan = !span ? "row-span-1" : `row-span-${span[1]}`;
+
+const extraClasses = [
+    colPosition, rowPosition, colSpan, rowSpan, className
+].join(" ");
+---
+
+<div class={extraClasses} {...rest}>
+    <slot />
+</div>
