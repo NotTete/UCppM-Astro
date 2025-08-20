@@ -3,6 +3,8 @@ import BentoBase from "./BentoBase.astro";
 interface Props {
     position: [number, number];
     span?: [number, number];
+    mdPosition?: [number, number];
+    mdSpan?: [number, number];
 }
 
 const { ...rest } = Astro.props;

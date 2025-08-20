@@ -1,19 +1,30 @@
 ---
+import { undefined } from 'astro:schema';
+
 interface Props {
     position: [number, number];
     span?: [number, number];
+    mdPosition?: [number, number];
+    mdSpan?: [number, number];
     class?: string;
 }
 
-const { class: className, position, span, ...rest } = Astro.props;
+const { class: className, position, span, mdSpan, mdPosition, ...rest } = Astro.props;
 
 if (!Number.isInteger(position[0]) || !Number.isInteger(position[1])) {
 	throw new Error("Position values must be integers.");
 }
 
-
 if (span && (!Number.isInteger(span[0]) || !Number.isInteger(span[1]))) {
 	throw new Error("Span values must be integers.");
+}
+
+if (mdSpan && (!Number.isInteger(mdSpan[0]) || !Number.isInteger(mdSpan[1]))) {
+	throw new Error("mdSpan values must be integers.");
+}
+
+if (mdPosition && (!Number.isInteger(mdPosition[0]) || !Number.isInteger(mdPosition[1]))) {
+	throw new Error("mdSpan values must be integers.");
 }
 
 const colPosition = `col-start-${position[0]}`;
@@ -22,8 +33,14 @@ const rowPosition = `row-start-${position[1]}`;
 const colSpan = !span ? "col-span-1" : `col-span-${span[0]}`;
 const rowSpan = !span ? "row-span-1" : `row-span-${span[1]}`;
 
+const mdColPosition = !mdPosition ? "" : `lg:col-start-${mdPosition[0]}`;
+const mdRowPosition = !mdPosition ? "" : `lg:row-start-${mdPosition[1]}`;
+const mdColSpan = !mdSpan ? "" : `lg:col-span-${mdSpan[0]}`;
+const mdRowSpan = !mdSpan ? "" : `lg:row-span-${mdSpan[1]}`;
+
+
 const extraClasses = [
-    colPosition, rowPosition, colSpan, rowSpan, className
+    colPosition, rowPosition, colSpan, rowSpan, className, mdColPosition, mdRowPosition, mdColSpan, mdRowSpan
 ].join(" ");
 ---
 

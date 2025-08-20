@@ -24,10 +24,10 @@
   @media not all and (hover: hover) { &:active { @slot; } }
 }
 
-@source inline("grid-cols-{1..12..1}");
-@source inline("col-span-{1..12..1}");
-@source inline("col-start-{1..12..1}");
+@source inline("{lg:,}grid-cols-{1..12..1}");
+@source inline("{lg:,}col-span-{1..12..1}");
+@source inline("{lg:,}col-start-{1..12..1}");
 
-@source inline("grid-rows-{1..12..1}");
-@source inline("row-span-{1..12..1}");
-@source inline("row-start-{1..12..1}");
+@source inline("{lg:,}grid-rows-{1..12..1}");
+@source inline("{lg:,}row-span-{1..12..1}");
+@source inline("{lg:,}row-start-{1..12..1}");

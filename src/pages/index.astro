@@ -14,7 +14,6 @@ import URJCImage from "../assets/urjc.webp";
 import CodeImage from "../assets/kmp-code.webp";
 import NavidadImage from "../assets/concurso_navidad.webp";
 import AdaByronImage from "../assets/adabyron.webp";
-
 ---
 
 <Layout>
@@ -24,8 +23,14 @@ import AdaByronImage from "../assets/adabyron.webp";
         <h1 class="bento-title">¿Quiénes somos?</h1>
         <a class="relative top-[-175px]" style="visibility: hidden;" id="about"
         ></a>
-        <BentoGrid columns={2} rows={9} class="max-w-5xl m-5">
-            <BentoText position={[1, 1]} span={[1, 2]}>
+        <BentoGrid
+            columns={1}
+            rows={7}
+            mdColumns={2}
+            mdRows={9}
+            class="lg:max-w-5xl md:max-w-2xl m-5"
+        >
+            <BentoText mdPosition={[1, 1]} mdSpan={[1, 2]}  position={[1, 3]} span={[1, 1]}>
                 <p>
                     Somos un grupo de estudiantes de la <strong
                         ><a href={ucmLink}>Universidad Complutense de Madrid</a
@@ -36,16 +41,25 @@ import AdaByronImage from "../assets/adabyron.webp";
             <BentoImage
                 src={DaniSwercImage}
                 alt="UCppM team at SWERC competition"
-                position={[2, 1]}
-                span={[1, 6]}
+                mdPosition={[2, 1]}
+                mdSpan={[1, 6]}
+                position={[1, 1]}
+                span={[1, 2]}
             />
             <BentoImage
                 src={NoahCodeforcesImage}
                 alt="Person in a Codeforces virtual contest"
-                position={[1, 3]}
-                span={[1, 7]}
+                mdPosition={[1, 3]}
+                mdSpan={[1, 7]}
+                position={[1, 4]}
+                span={[1, 3]}
             />
-            <BentoText position={[2, 7]} span={[1, 3]}>
+            <BentoText
+                mdPosition={[2, 7]}
+                mdSpan={[1, 3]}
+                position={[1, 7]}
+                span={[1, 1]}
+            >
                 <p>
                     Nos reunimos para <strong>resolver problemas</strong>,
                     compartir conocimientos a través de <strong>charlas</strong
@@ -58,8 +72,14 @@ import AdaByronImage from "../assets/adabyron.webp";
         </BentoGrid>
 
         <h1 class="bento-title">¿Qué problemas resolvemos?</h1>
-        <BentoGrid columns={2} rows={4} class="max-w-5xl m-5">
-            <BentoText position={[2, 1]} span={[1, 1]}>
+        <BentoGrid
+            columns={1}
+            rows={7}
+            mdColumns={2}
+            mdRows={4}
+            class="lg:max-w-5xl md:max-w-2xl m-5"
+        >
+            <BentoText span={[1, 1]} position={[1, 3]} mdPosition={[2, 1]}>
                 <p>
                     Resolvemos <strong>problemas lógico-matemáticos</strong>
                     diseñando y <strong
@@ -72,15 +92,17 @@ import AdaByronImage from "../assets/adabyron.webp";
                 src={URJCImage}
                 alt="Participants competing in a URJC tournament"
                 position={[1, 1]}
-                span={[1, 3]}
+                span={[1, 2]}
+                mdSpan={[1, 3]}
             />
             <BentoImage
                 src={CodeImage}
                 alt="Code in C++ implementing counting word algrithm with KMP"
-                position={[2, 2]}
+                position={[1, 4]}
                 span={[1, 3]}
+                mdPosition={[2, 2]}
             />
-            <BentoText position={[1, 4]} span={[1, 1]}>
+            <BentoText position={[1, 7]} span={[1, 1]} mdPosition={[1, 4]}>
                 <p>
                     Entre los problemas que resolvemos podemos encontrar tareas
                     como contar cuántas veces aparece una palabra específica
@@ -91,8 +113,19 @@ import AdaByronImage from "../assets/adabyron.webp";
         </BentoGrid>
 
         <h1 class="bento-title">¿Por qué deberías unirte?</h1>
-        <BentoGrid columns={5} rows={5} class="max-w-5xl m-5">
-            <BentoText position={[4, 1]} span={[2, 1]}>
+        <BentoGrid
+            columns={1}
+            rows={7}
+            mdColumns={5}
+            mdRows={5}
+            class="lg:max-w-5xl md:max-w-3xl m-5"
+        >
+            <BentoText
+                mdPosition={[4, 1]}
+                mdSpan={[2, 1]}
+                position={[1, 1]}
+                span={[1, 1]}
+            >
                 <p>
                     El principal motivo es porque es <strong>divertido</strong>.
                     Además
@@ -103,22 +136,32 @@ import AdaByronImage from "../assets/adabyron.webp";
             <BentoImage
                 src={AdaByronImage}
                 alt="Participants and volunters in Ada Byron National contest"
-                position={[1, 1]}
-                span={[3, 3]}
+                mdPosition={[1, 1]}
+                mdSpan={[3, 3]}
+                position={[1, 2]}
+                span={[1, 2]}
             />
             <BentoImage
                 src={NavidadImage}
                 alt="Xmas tournament celebrated at the faculty"
-                position={[4, 2]}
-                span={[2, 2]}
+                mdPosition={[4, 2]}
+                mdSpan={[2, 2]}
+                position={[1, 5]}
+                span={[1, 3]}
             />
-            <BentoText position={[1, 4]} span={[5, 1]}>
+            <BentoText
+                mdPosition={[1, 4]}
+                mdSpan={[5, 1]}
+                position={[1, 4]}
+                span={[1, 1]}
+            >
                 <p>
                     Por otro lado, resolver esta clase de problemas es muy útil
-                    tanto para algunas <strong>asignaturas de la carrera</strong> como para las
-                    <strong>entrevistas de trabajo</strong> en diversas empresas. Así que, no
-                    solo te lo pasarás bien, sino que adquirirás habilidades que
-                    te serán valiosas en el futuro.
+                    tanto para algunas <strong>asignaturas de la carrera</strong
+                    > como para las
+                    <strong>entrevistas de trabajo</strong> en diversas empresas.
+                    Así que, no solo te lo pasarás bien, sino que adquirirás habilidades
+                    que te serán valiosas en el futuro.
                 </p>
             </BentoText>
             <!-- <BentoText position={[1, 6]} span={[2, 1]}>

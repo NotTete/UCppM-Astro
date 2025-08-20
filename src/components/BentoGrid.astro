@@ -2,12 +2,14 @@
 interface Props {
     columns: number;
     rows: number;
+    mdColumns?: number;
+    mdRows?: number;
     class?: string,
 }
 
 const defaultStyle = "grid justify-center items-center gap-5";
 
-const { columns, rows, class: className } = Astro.props;
+const { columns, rows, mdRows, mdColumns, class: className } = Astro.props;
 
 if (!Number.isInteger(columns)) {
 	throw new Error("Columns must be integers.");
@@ -17,11 +19,21 @@ if (!Number.isInteger(rows)) {
 	throw new Error("Rows must be integers.");
 }
 
+if (mdColumns && !Number.isInteger(mdColumns)) {
+	throw new Error("mdColumns must be integers.");
+}
+
+if (mdRows && !Number.isInteger(mdRows)) {
+	throw new Error("mdRows must be integers.");
+}
+
 const colStr = `grid-cols-${columns}`;
 const rowStr = `grid-rows-${rows}`;
+const mdColStr = mdColumns ? `lg:grid-cols-${mdColumns}` : "";
+const mdRowStr = mdRows ? `lg:grid-rows-${mdRows}` : "";
 
 const extraClasses = [
-    defaultStyle, colStr, rowStr, className
+    defaultStyle, colStr, rowStr, className, mdColStr, mdRowStr
 ].join(" ");
 
 
