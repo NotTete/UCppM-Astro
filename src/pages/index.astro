@@ -1,16 +1,20 @@
 ---
-import { Image } from "astro:assets";
 import HomeTitle from "../components/HomeTitle.astro";
 import Layout from "../layouts/Layout.astro";
-import DaniSwercImage from "../assets/swerc-dani.webp";
-import NoahCodeforcesImage from "../assets/noah-codeforces.webp";
-import URJCImage from "../assets/urjc.webp";
-import CodeImage from "../assets/kmp-code.webp";
 
-import { ucmLink } from "../data/links";
 import BentoText from "../components/BentoText.astro";
 import BentoGrid from "../components/BentoGrid.astro";
 import BentoImage from "../components/BentoImage.astro";
+
+import { ucmLink } from "../data/links";
+
+import DaniSwercImage from "../assets/swerc-dani.webp";
+import NoahCodeforcesImage from "../assets/codeforces.webp";
+import URJCImage from "../assets/urjc.webp";
+import CodeImage from "../assets/kmp-code.webp";
+import NavidadImage from "../assets/concurso_navidad.webp";
+import AdaByronImage from "../assets/adabyron.webp";
+
 ---
 
 <Layout>
@@ -52,9 +56,10 @@ import BentoImage from "../components/BentoImage.astro";
                 </p>
             </BentoText>
         </BentoGrid>
+
         <h1 class="bento-title">¿Qué problemas resolvemos?</h1>
-        <BentoGrid columns={2} rows={6} class="max-w-5xl m-5">
-            <BentoText position={[2, 1]} span={[1, 2]}>
+        <BentoGrid columns={2} rows={4} class="max-w-5xl m-5">
+            <BentoText position={[2, 1]} span={[1, 1]}>
                 <p>
                     Resolvemos <strong>problemas lógico-matemáticos</strong>
                     diseñando y <strong
@@ -67,15 +72,15 @@ import BentoImage from "../components/BentoImage.astro";
                 src={URJCImage}
                 alt="Participants competing in a URJC tournament"
                 position={[1, 1]}
-                span={[1, 5]}
+                span={[1, 3]}
             />
             <BentoImage
                 src={CodeImage}
                 alt="Code in C++ implementing counting word algrithm with KMP"
-                position={[2, 3]}
-                span={[1, 5]}
+                position={[2, 2]}
+                span={[1, 3]}
             />
-            <BentoText position={[1, 6]} span={[1, 2]}>
+            <BentoText position={[1, 4]} span={[1, 1]}>
                 <p>
                     Entre los problemas que resolvemos podemos encontrar tareas
                     como contar cuántas veces aparece una palabra específica
@@ -84,37 +89,39 @@ import BentoImage from "../components/BentoImage.astro";
                 </p>
             </BentoText>
         </BentoGrid>
+
         <h1 class="bento-title">¿Por qué deberías unirte?</h1>
-        <BentoGrid columns={2} rows={7} class="max-w-5xl m-5">
-            <BentoText position={[2, 1]} span={[1, 1]}>
+        <BentoGrid columns={5} rows={5} class="max-w-5xl m-5">
+            <BentoText position={[4, 1]} span={[2, 1]}>
                 <p>
-                    El principal motivo es porque es divertido ;) . Además
-                    conocerás a mucha gente interesante e incluso harás nuevos
-                    amigos.
+                    El principal motivo es porque es <strong>divertido</strong>.
+                    Además
+                    <strong>conocerás a mucha gente</strong> interesante e incluso
+                    harás <strong> nuevos amigos</strong>.
                 </p>
             </BentoText>
             <BentoImage
-                src={URJCImage}
-                alt="Participants competing in a URJC tournament"
+                src={AdaByronImage}
+                alt="Participants and volunters in Ada Byron National contest"
                 position={[1, 1]}
-                span={[1, 3]}
+                span={[3, 3]}
             />
             <BentoImage
-                src={CodeImage}
-                alt="Code in C++ implementing counting word algrithm with KMP"
-                position={[2, 2]}
-                span={[1, 4]}
+                src={NavidadImage}
+                alt="Xmas tournament celebrated at the faculty"
+                position={[4, 2]}
+                span={[2, 2]}
             />
-            <BentoText position={[1, 4]} span={[1, 2]}>
+            <BentoText position={[1, 4]} span={[5, 1]}>
                 <p>
                     Por otro lado, resolver esta clase de problemas es muy útil
-                    tanto para algunas asignaturas de la carrera como para las
-                    entrevistas de trabajo en diversas empresas. Así que, no
+                    tanto para algunas <strong>asignaturas de la carrera</strong> como para las
+                    <strong>entrevistas de trabajo</strong> en diversas empresas. Así que, no
                     solo te lo pasarás bien, sino que adquirirás habilidades que
                     te serán valiosas en el futuro.
                 </p>
             </BentoText>
-            <BentoText position={[1, 6]} span={[2, 1]}>
+            <!-- <BentoText position={[1, 6]} span={[2, 1]}>
                 <p class="text-center">
                     Si te ha llamado la atención <strong
                         ><a href="{{ .Site.Params.url.discord }}">
@@ -131,7 +138,7 @@ import BentoImage from "../components/BentoImage.astro";
                         ></strong
                     >.
                 </p>
-            </BentoText>
+            </BentoText> -->
         </BentoGrid>
         <!--
 
