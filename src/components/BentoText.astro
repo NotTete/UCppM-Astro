@@ -1,10 +1,8 @@
 ---
 import BentoBase from "./BentoBase.astro";
+import { type BentoLayouts } from "../types/bento";
 interface Props {
-    position: [number, number];
-    span?: [number, number];
-    mdPosition?: [number, number];
-    mdSpan?: [number, number];
+    layout: BentoLayouts
 }
 
 const { ...rest } = Astro.props;

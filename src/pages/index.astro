@@ -24,13 +24,20 @@ import AdaByronImage from "../assets/adabyron.webp";
         <a class="relative top-[-175px]" style="visibility: hidden;" id="about"
         ></a>
         <BentoGrid
-            columns={1}
-            rows={7}
-            mdColumns={2}
-            mdRows={9}
+            grid = {{
+                lg: [2, 9],
+                md: [1, 9],
+                default: [1, 11],
+            }}
             class="lg:max-w-5xl md:max-w-2xl m-5"
         >
-            <BentoText mdPosition={[1, 1]} mdSpan={[1, 2]}  position={[1, 3]} span={[1, 1]}>
+            <BentoText
+                layout={{
+                    lg: [1, 1, 1, 2],
+                    md: [1, 4, 1, 1],
+                    default: [1, 4, 1, 2],
+                }}
+            >
                 <p>
                     Somos un grupo de estudiantes de la <strong
                         ><a href={ucmLink}>Universidad Complutense de Madrid</a
@@ -41,24 +48,27 @@ import AdaByronImage from "../assets/adabyron.webp";
             <BentoImage
                 src={DaniSwercImage}
                 alt="UCppM team at SWERC competition"
-                mdPosition={[2, 1]}
-                mdSpan={[1, 6]}
-                position={[1, 1]}
-                span={[1, 2]}
+                layout={{
+                    lg: [2, 1, 1, 6],
+                    md: [1, 1, 1, 3],
+                    default: [1, 1, 1, 3],
+                }}
             />
             <BentoImage
                 src={NoahCodeforcesImage}
                 alt="Person in a Codeforces virtual contest"
-                mdPosition={[1, 3]}
-                mdSpan={[1, 7]}
-                position={[1, 4]}
-                span={[1, 3]}
+                layout={{
+                    lg: [1, 3, 1, 7],
+                    md: [1, 5, 1, 3],
+                    default: [1, 6, 1, 3],
+                }}
             />
             <BentoText
-                mdPosition={[2, 7]}
-                mdSpan={[1, 3]}
-                position={[1, 7]}
-                span={[1, 1]}
+                layout={{
+                    lg: [2, 7, 1, 3],
+                    md: [1, 8, 1, 3],
+                    default: [1, 9, 1, 3],
+                }}
             >
                 <p>
                     Nos reunimos para <strong>resolver problemas</strong>,
@@ -73,36 +83,55 @@ import AdaByronImage from "../assets/adabyron.webp";
 
         <h1 class="bento-title">¿Qué problemas resolvemos?</h1>
         <BentoGrid
-            columns={1}
-            rows={7}
-            mdColumns={2}
-            mdRows={4}
+            grid = {{
+                lg: [2, 4],
+                md: [1, 7],
+                default: [1, 9]
+            }}
+
             class="lg:max-w-5xl md:max-w-2xl m-5"
         >
-            <BentoText span={[1, 1]} position={[1, 3]} mdPosition={[2, 1]}>
+            <BentoText
+                layout={{
+                    lg: [2, 1, 1, 1],
+                    md: [1, 3, 1, 1],
+                    default: [1, 3, 1, 2],
+
+                }}
+            >
                 <p>
                     Resolvemos <strong>problemas lógico-matemáticos</strong>
                     diseñando y <strong
                         >programando algoritmos precisos y eficientes</strong
                     >. Estos algoritmos son secuencias de pasos que garantizan
-                    una solución <strong></strong> del problema.
+                    una solución del problema.
                 </p>
             </BentoText>
             <BentoImage
                 src={URJCImage}
                 alt="Participants competing in a URJC tournament"
-                position={[1, 1]}
-                span={[1, 2]}
-                mdSpan={[1, 3]}
+                layout={{
+                    lg: [1, 1, 1, 3],
+                    md: [1, 1, 1, 2],
+                    default: [1, 1, 1, 2],
+                }}
             />
             <BentoImage
                 src={CodeImage}
                 alt="Code in C++ implementing counting word algrithm with KMP"
-                position={[1, 4]}
-                span={[1, 3]}
-                mdPosition={[2, 2]}
+                layout={{
+                    lg: [2, 2, 1, 3],
+                    md: [1, 4, 1, 3],
+                    default: [1, 5, 1, 3],
+                }}
             />
-            <BentoText position={[1, 7]} span={[1, 1]} mdPosition={[1, 4]}>
+            <BentoText
+                layout={{
+                    lg: [1, 4, 1, 1],
+                    md: [1, 7, 1, 1],
+                    default: [1, 8, 1, 2],
+                }}
+            >
                 <p>
                     Entre los problemas que resolvemos podemos encontrar tareas
                     como contar cuántas veces aparece una palabra específica
@@ -114,17 +143,19 @@ import AdaByronImage from "../assets/adabyron.webp";
 
         <h1 class="bento-title">¿Por qué deberías unirte?</h1>
         <BentoGrid
-            columns={1}
-            rows={7}
-            mdColumns={5}
-            mdRows={5}
-            class="lg:max-w-5xl md:max-w-3xl m-5"
+            grid = {{
+                lg: [5, 5],
+                md: [1, 9],
+                default: [1, 7]
+            }}
+            class="lg:max-w-5xl md:max-w-2xl m-5"
         >
             <BentoText
-                mdPosition={[4, 1]}
-                mdSpan={[2, 1]}
-                position={[1, 1]}
-                span={[1, 1]}
+                layout={{
+                    lg: [4, 1, 2, 1],
+                    md: [1, 1, 1, 1],
+                    default: [1, 1, 1, 1],
+                }}
             >
                 <p>
                     El principal motivo es porque es <strong>divertido</strong>.
@@ -136,24 +167,27 @@ import AdaByronImage from "../assets/adabyron.webp";
             <BentoImage
                 src={AdaByronImage}
                 alt="Participants and volunters in Ada Byron National contest"
-                mdPosition={[1, 1]}
-                mdSpan={[3, 3]}
-                position={[1, 2]}
-                span={[1, 2]}
+                layout={{
+                    lg: [1, 1, 3, 3],
+                    md: [1, 2, 1, 3],
+                    default: [1, 2, 1, 2],
+                }}
             />
             <BentoImage
                 src={NavidadImage}
                 alt="Xmas tournament celebrated at the faculty"
-                mdPosition={[4, 2]}
-                mdSpan={[2, 2]}
-                position={[1, 5]}
-                span={[1, 3]}
+                layout={{
+                    lg: [4, 2, 2, 2],
+                    md: [1, 7, 1, 4],
+                    default: [1, 6, 1, 2],
+                }}
             />
             <BentoText
-                mdPosition={[1, 4]}
-                mdSpan={[5, 1]}
-                position={[1, 4]}
-                span={[1, 1]}
+                layout={{
+                    lg: [1, 4, 5, 1],
+                    md: [1, 5, 1, 2],
+                    default: [1, 4, 1, 2],
+                }}
             >
                 <p>
                     Por otro lado, resolver esta clase de problemas es muy útil

@@ -1,48 +1,53 @@
 ---
-
+import { undefined } from "astro:schema";
+import { type BentoLayouts, type BentoLayout } from "../types/bento";
 interface Props {
-    position: [number, number];
-    span?: [number, number];
-    mdPosition?: [number, number];
-    mdSpan?: [number, number];
+    layout: BentoLayouts;
     class?: string;
 }
 
-const { class: className, position, span, mdSpan, mdPosition, ...rest } = Astro.props;
+const { class: className, layout, ...rest } = Astro.props;
 
-if (!Number.isInteger(position[0]) || !Number.isInteger(position[1])) {
-	throw new Error("Position values must be integers.");
+function processClasses(
+    layout: BentoLayout,
+    layoutPrefix: string | null,
+): Array<string> {
+
+
+    for (let i = 0; i < 4; i++) {
+        if (!Number.isInteger(layout[i])) {
+            throw new Error(`${layoutPrefix} layout values must be integers.`);
+        }
+    }
+
+    let prefix: string;
+
+    if (layoutPrefix) {
+        prefix = `${layoutPrefix}:`;
+    } else {
+        prefix = "";
+    }
+    const colPosition = `${prefix}col-start-${layout[0]}`;
+    const rowPosition = `${prefix}row-start-${layout[1]}`;
+
+    const colSpan = `${prefix}col-span-${layout[2]}`;
+    const rowSpan = `${prefix}row-span-${layout[3]}`;
+
+    let res: Array<string> = [colPosition, rowPosition, colSpan, rowSpan];
+
+    return res;
 }
 
-if (span && (!Number.isInteger(span[0]) || !Number.isInteger(span[1]))) {
-	throw new Error("Span values must be integers.");
-}
+let classes = [className];
 
-if (mdSpan && (!Number.isInteger(mdSpan[0]) || !Number.isInteger(mdSpan[1]))) {
-	throw new Error("mdSpan values must be integers.");
-}
+if (layout.sm) classes = classes.concat(processClasses(layout.sm, "sm"));
+if (layout.md) classes = classes.concat(processClasses(layout.md, "md"));
+if (layout.lg) classes = classes.concat(processClasses(layout.lg, "lg"));
+if (layout.default) classes = classes.concat(processClasses(layout.default, null));
 
-if (mdPosition && (!Number.isInteger(mdPosition[0]) || !Number.isInteger(mdPosition[1]))) {
-	throw new Error("mdSpan values must be integers.");
-}
-
-const colPosition = `col-start-${position[0]}`;
-const rowPosition = `row-start-${position[1]}`;
-
-const colSpan = !span ? "col-span-1" : `col-span-${span[0]}`;
-const rowSpan = !span ? "row-span-1" : `row-span-${span[1]}`;
-
-const mdColPosition = !mdPosition ? "" : `lg:col-start-${mdPosition[0]}`;
-const mdRowPosition = !mdPosition ? "" : `lg:row-start-${mdPosition[1]}`;
-const mdColSpan = !mdSpan ? "" : `lg:col-span-${mdSpan[0]}`;
-const mdRowSpan = !mdSpan ? "" : `lg:row-span-${mdSpan[1]}`;
-
-
-const extraClasses = [
-    colPosition, rowPosition, colSpan, rowSpan, className, mdColPosition, mdRowPosition, mdColSpan, mdRowSpan
-].join(" ");
+const classesStr = classes.join(" ");
 ---
 
-<div class={extraClasses} {...rest}>
+<div class={classesStr} {...rest}>
     <slot />
 </div>

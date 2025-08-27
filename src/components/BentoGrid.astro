@@ -1,45 +1,55 @@
 ---
+
+import { type BentoMatrices, type BentoMatrix } from '../types/bento';
+
 interface Props {
-    columns: number;
-    rows: number;
-    mdColumns?: number;
-    mdRows?: number;
+    grid: BentoMatrices,
     class?: string,
 }
 
 const defaultStyle = "grid justify-center items-center gap-5";
 
-const { columns, rows, mdRows, mdColumns, class: className } = Astro.props;
+const { grid, class: className } = Astro.props;
 
-if (!Number.isInteger(columns)) {
-	throw new Error("Columns must be integers.");
+function processClasses(
+    layout: BentoMatrix,
+    layoutPrefix: string | null,
+): Array<string> {
+
+
+    for (let i = 0; i < 2; i++) {
+        if (!Number.isInteger(layout[i])) {
+            throw new Error(`${layoutPrefix} layout values must be integers.`);
+        }
+    }
+
+    let prefix: string;
+
+    if (layoutPrefix) {
+        prefix = `${layoutPrefix}:`;
+    } else {
+        prefix = "";
+    }
+
+    const cols = `${prefix}grid-cols-${layout[0]}`;
+    const rows = `${prefix}grid-rows-${layout[1]}`;
+
+    let res: Array<string> = [cols, rows];
+
+    return res;
 }
 
-if (!Number.isInteger(rows)) {
-	throw new Error("Rows must be integers.");
-}
+let classes = [className, defaultStyle, className];
 
-if (mdColumns && !Number.isInteger(mdColumns)) {
-	throw new Error("mdColumns must be integers.");
-}
+if (grid.sm) classes = classes.concat(processClasses(grid.sm, "sm"));
+if (grid.md) classes = classes.concat(processClasses(grid.md, "md"));
+if (grid.lg) classes = classes.concat(processClasses(grid.lg, "lg"));
+if (grid.default) classes = classes.concat(processClasses(grid.default, null));
 
-if (mdRows && !Number.isInteger(mdRows)) {
-	throw new Error("mdRows must be integers.");
-}
-
-const colStr = `grid-cols-${columns}`;
-const rowStr = `grid-rows-${rows}`;
-const mdColStr = mdColumns ? `lg:grid-cols-${mdColumns}` : "";
-const mdRowStr = mdRows ? `lg:grid-rows-${mdRows}` : "";
-
-const extraClasses = [
-    defaultStyle, colStr, rowStr, className, mdColStr, mdRowStr
-].join(" ");
-
-
+const classesStr = classes.join(" ");
 
 ---
 
-<section class={extraClasses}>
+<section class={classesStr}>
     <slot/>
 </section>
