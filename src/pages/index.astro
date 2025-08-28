@@ -6,7 +6,7 @@ import BentoText from "../components/BentoText.astro";
 import BentoGrid from "../components/BentoGrid.astro";
 import BentoImage from "../components/BentoImage.astro";
 
-import { ucmLink } from "../data/links";
+import { discordLink, sociosLink, ucmLink } from "../data/links";
 
 import DaniSwercImage from "../assets/swerc-dani.webp";
 import NoahCodeforcesImage from "../assets/codeforces.webp";
@@ -19,18 +19,20 @@ import AdaByronImage from "../assets/adabyron.webp";
 <Layout>
     <a class="absolute top-0" id="home"></a>
     <HomeTitle />
-    <div class="w-full flex flex-col items-center justify-center my-20">
+    <div
+        class="w-full flex flex-col items-center justify-center my-20 lg:max-w-5xl md:max-w-3xl m-auto"
+    >
         <h1 class="bento-title">¿Quiénes somos?</h1>
         <a class="relative top-[-175px]" style="visibility: hidden;" id="about"
         ></a>
         <BentoGrid
-            grid = {{
+            grid={{
                 lg: [2, 9],
                 md: [2, 6],
                 sm: [1, 6],
                 default: [1, 11],
             }}
-            class="lg:max-w-5xl md:max-w-3xl m-5"
+            class="l m-5"
         >
             <BentoText
                 layout={{
@@ -88,14 +90,13 @@ import AdaByronImage from "../assets/adabyron.webp";
 
         <h1 class="bento-title">¿Qué problemas resolvemos?</h1>
         <BentoGrid
-            grid = {{
+            grid={{
                 lg: [2, 4],
                 md: [2, 7],
                 sm: [1, 7],
-                default: [1, 9]
+                default: [1, 9],
             }}
-
-            class="lg:max-w-5xl md:max-w-3xl m-5"
+            class="m-5"
         >
             <BentoText
                 layout={{
@@ -103,7 +104,6 @@ import AdaByronImage from "../assets/adabyron.webp";
                     md: [2, 1, 1, 3],
                     sm: [1, 3, 1, 1],
                     default: [1, 3, 1, 2],
-
                 }}
             >
                 <p>
@@ -153,13 +153,13 @@ import AdaByronImage from "../assets/adabyron.webp";
 
         <h1 class="bento-title">¿Por qué deberías unirte?</h1>
         <BentoGrid
-            grid = {{
+            grid={{
                 lg: [5, 4],
                 md: [5, 3],
                 sm: [1, 14],
-                default: [1, 7]
+                default: [1, 7],
             }}
-            class="lg:max-w-5xl md:max-w-3xl m-5"
+            class="m-5"
         >
             <BentoText
                 layout={{
@@ -213,66 +213,17 @@ import AdaByronImage from "../assets/adabyron.webp";
                     que te serán valiosas en el futuro.
                 </p>
             </BentoText>
-            <!-- <BentoText position={[1, 6]} span={[2, 1]}>
-                <p class="text-center">
-                    Si te ha llamado la atención <strong
-                        ><a href="{{ .Site.Params.url.discord }}">
-                            únete a nuestro Discord</a
-                        ></strong
-                    >, además si eres estudiante de la <strong
-                        ><a href="{{ .Site.Params.url.fdi }}"
-                            >Facultad de informática</a
-                        ></strong
-                    > únete a la asociación, sin ningún compromiso, rellenando este
-                    <strong
-                        ><a href="{{ .Site.Params.url.formulario }}"
-                            >formulario</a
-                        ></strong
-                    >.
-                </p>
-            </BentoText> -->
         </BentoGrid>
-        <!--
-
-            <div class="home-text">
-                <h1>¿Por qué deberías unirte?</h1>
-                <p>
-                    El principal motivo es porque es divertido ;) . Además
-                    conocerás a mucha gente interesante e incluso harás nuevos
-                    amigos.
-                </p>
-                <p>
-                    Por otro lado, resolver esta clase de problemas es muy útil
-                    tanto para algunas asignaturas de la carrera como para las
-                    entrevistas de trabajo en diversas empresas. Así que, no
-                    solo te lo pasarás bien, sino que adquirirás habilidades que
-                    te serán valiosas en el futuro.
-                </p>
-                <p>
-                    Si te ha llamado la atención <b
-                        ><a href="{{ .Site.Params.url.discord }}">
-                            únete a nuestro Discord</a
-                        ></b
-                    >, además si eres estudiante de la <em
-                        ><a href="{{ .Site.Params.url.fdi }}"
-                            >Facultad de informática</a
-                        ></em
-                    > únete a la asociación, sin ningún compromiso, rellenando este
-                    <b
-                        ><a href="{{ .Site.Params.url.formulario }}"
-                            >formulario</a
-                        ></b
-                    >.
-                </p>
-            </div>
-            <div class="home-text">
-                <p>
-                    <a href="{{ .Site.Params.url.discord }}">
-                        >¿Tienes dudas? Consulta nuestra sección de preguntas
-                        frecuentes.</a
-                    >
-                </p>
-            </div> -->
+        <div
+            class="overflow-hidden md:text-6xl sm:text-5xl text-3xl font-semibold text-center
+            flex items-center p-10"
+        >
+            <span class="relative z-10">
+                ¿Interesado? metéte en nuestro <a href={discordLink}
+                    ><strong>Discord</strong></a
+                > y <a href={sociosLink}><strong>hazte socio.</strong></a>
+            </span>
+        </div>
     </div>
 </Layout>
 
