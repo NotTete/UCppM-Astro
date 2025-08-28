@@ -9,23 +9,23 @@ import { discordLink, instagramLink, githubLink } from "../data/links.ts";
 const navbarMenu = [
     {
         name: "¿Quienes somos?",
-        link: `${import.meta.env.BASE_URL}/#about`,
+        link: `${import.meta.env.BASE_URL}#about`,
     },
     {
         name: "Actividades",
-        link: `${import.meta.env.BASE_URL}/activities`,
+        link: `${import.meta.env.BASE_URL}activities`,
     },
     {
         name: "Recursos",
-        link: `${import.meta.env.BASE_URL}/resources`,
+        link: `${import.meta.env.BASE_URL}resources`,
     },
     {
         name: "Contacto",
-        link: `${import.meta.env.BASE_URL}/contact`,
+        link: `${import.meta.env.BASE_URL}contact`,
     },
     {
         name: "FAQ",
-        link: `${import.meta.env.BASE_URL}/faq`,
+        link: `${import.meta.env.BASE_URL}faq`,
     },
 ];
 
@@ -56,7 +56,7 @@ const socialMenu = [
         <ul
             class="flex flex-row justify-between md:w-auto w-full items-center px-2.5"
         >
-            <a href={`${import.meta.env.BASE_URL}/#home`} class="nav-button">
+            <a href={`${import.meta.env.BASE_URL}#home`} class="nav-button">
                 <li
                     class="text-2xl font-semibold flex items-center justify-center px-2.5 duration-150 ease-in hover:scale-[110%] transition-transform md:py-0 py-1.5 hover:text-primary hover:text-shadow-[0px_0px_20px_var(--color-primary)]"
                 >
