@@ -56,16 +56,13 @@ const socialMenu = [
         <ul
             class="flex flex-row justify-between md:w-auto w-full items-center px-2.5"
         >
-            <li
-                class="text-2xl font-semibold flex items-center justify-center px-2.5 duration-150 ease-in hover:scale-[110%] transition-transform md:py-0 py-1.5 hover:text-primary hover:text-shadow-[0px_0px_20px_var(--color-primary)]"
-            >
-                <a
-                    href={`${import.meta.env.BASE_URL}/#home`}
-                    class="nav-button"
+            <a href={`${import.meta.env.BASE_URL}/#home`} class="nav-button">
+                <li
+                    class="text-2xl font-semibold flex items-center justify-center px-2.5 duration-150 ease-in hover:scale-[110%] transition-transform md:py-0 py-1.5 hover:text-primary hover:text-shadow-[0px_0px_20px_var(--color-primary)]"
                 >
                     UCppM
-                </a>
-            </li>
+                </li>
+            </a>
             <li>
                 <HamburguerButton id="menu-toggle" />
             </li>
@@ -77,9 +74,12 @@ const socialMenu = [
         >
             {
                 navbarMenu.map((elem) => (
-                    <li class="nav-button md:rounded-4xl md:w-auto w-full text-center p-2.5 bg-transparent border-text hover:shadow-[0px_0px_20px_var(--color-primary)] hover:bg-primary  ease-in-out duration-150 transition-all">
-                        <a href={elem.link}>{elem.name}</a>
-                    </li>
+                    <a
+                        class="nav-button md:rounded-4xl md:w-auto w-full text-center p-2.5 bg-transparent border-text hover:shadow-[0px_0px_20px_var(--color-primary)] hover:bg-primary  ease-in-out duration-150 transition-all"
+                        href={elem.link}
+                    >
+                        <li>{elem.name}</li>
+                    </a>
                 ))
             }
         </ul>
@@ -87,16 +87,19 @@ const socialMenu = [
         <ul class="flex flex-row items-center justify-center text-md">
             {
                 socialMenu.map((elem) => (
-                    <li class="nav-button rounded-4xl p-2.5 hover:shadow-[0px_0px_20px_var(--color-primary)] hover:bg-primary ease-in-out duration-150 transition-all">
-                        <a href={elem.link}>
+                    <a
+                        href={elem.link}
+                        class="nav-button rounded-4xl p-2.5 hover:shadow-[0px_0px_20px_var(--color-primary)] hover:bg-primary ease-in-out duration-150 transition-all"
+                    >
+                        <li>
                             <Image
                                 loading="eager"
                                 src={elem.img}
                                 alt={elem.name}
                                 class="icon w-auto h-[1.5em]"
                             />
-                        </a>
-                    </li>
+                        </li>
+                    </a>
                 ))
             }
         </ul>
@@ -106,52 +109,55 @@ const socialMenu = [
         id="overlay"
     >
     </div>
+
+    <style>
+        @reference "../styles/global.css";
+
+        .icon {
+            filter: invert(100%) sepia(2%) saturate(140%) hue-rotate(192deg)
+                brightness(107%) contrast(78%);
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleButton = document.getElementById("menu-toggle");
+            const menu = document.getElementById("nav-menu");
+            const overlay = document.getElementById("overlay");
+            const buttons = document.getElementsByClassName("nav-button");
+            if (!toggleButton || !menu || !overlay) return;
+
+            function toggleMenu() {
+                const expanded =
+                    toggleButton?.getAttribute("aria-expanded") === "true";
+                toggleButton?.setAttribute(
+                    "aria-expanded",
+                    (!expanded).toString(),
+                );
+                menu?.classList.toggle("open");
+                overlay?.classList.toggle("open");
+            }
+
+            function closeMenu() {
+                toggleButton?.setAttribute("aria-expanded", "false");
+                menu?.classList.remove("open");
+                overlay?.classList.remove("open");
+            }
+
+            const styles = getComputedStyle(document.documentElement);
+            const breakPoint = styles.getPropertyValue("--breakpoint-md");
+            const mediaQuery = window.matchMedia(`(width < ${breakPoint})`);
+
+            for (const btn of buttons) {
+                btn.addEventListener("tap", closeMenu);
+                btn.addEventListener("click", closeMenu);
+            }
+
+            toggleButton.addEventListener("click", toggleMenu);
+            overlay.addEventListener("click", closeMenu);
+            toggleButton.addEventListener("tap", toggleMenu);
+            overlay.addEventListener("tap", closeMenu);
+            mediaQuery.addEventListener("change", closeMenu);
+        });
+    </script>
 </header>
-
-<style>
-    @reference "../styles/global.css";
-
-    .icon {
-        filter: invert(100%) sepia(2%) saturate(140%) hue-rotate(192deg)
-            brightness(107%) contrast(78%);
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const toggleButton = document.getElementById("menu-toggle");
-        const menu = document.getElementById("nav-menu");
-        const overlay = document.getElementById("overlay");
-        const buttons = document.getElementsByClassName("nav-button");
-        if (!toggleButton || !menu || !overlay) return;
-
-        function toggleMenu() {
-            const expanded =
-                toggleButton?.getAttribute("aria-expanded") === "true";
-            toggleButton?.setAttribute("aria-expanded", (!expanded).toString());
-            menu?.classList.toggle("open");
-            overlay?.classList.toggle("open");
-        }
-
-        function closeMenu() {
-            toggleButton?.setAttribute("aria-expanded", "false");
-            menu?.classList.remove("open");
-            overlay?.classList.remove("open");
-        }
-
-        const styles = getComputedStyle(document.documentElement);
-        const breakPoint = styles.getPropertyValue("--breakpoint-md");
-        const mediaQuery = window.matchMedia(`(width < ${breakPoint})`);
-
-        for (const btn of buttons) {
-            btn.addEventListener("tap", closeMenu);
-            btn.addEventListener("click", closeMenu);
-        }
-
-        toggleButton.addEventListener("click", toggleMenu);
-        overlay.addEventListener("click", closeMenu);
-        toggleButton.addEventListener("tap", toggleMenu);
-        overlay.addEventListener("tap", closeMenu);
-        mediaQuery.addEventListener("change", closeMenu);
-    });
-</script>
