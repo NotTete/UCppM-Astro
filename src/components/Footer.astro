@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+import Logo from "./Logo.astro";
+import discordLogo from "../assets/icons/discord.svg";
+import instagramLogo from "../assets/icons/instagram.svg";
+import githubLogo from "../assets/icons/github.svg";
+import youtubeLogo from "../assets/icons/youtube.svg";
+
+import {
+    discordLink,
+    instagramLink,
+    githubLink,
+    ucppmEmail,
+    youtubeLink,
+    sociosLink,
+    estatutosLink,
+} from "../data/links.ts";
+const year = new Date().getFullYear();
+
+const socialMenu = [
+    {
+        name: "Discord",
+        img: discordLogo,
+        link: discordLink,
+    },
+    {
+        name: "Instagram",
+        img: instagramLogo,
+        link: instagramLink,
+    },
+    {
+        name: "Github",
+        img: githubLogo,
+        link: githubLink,
+    },
+    {
+        name: "Youtube",
+        img: youtubeLogo,
+        link: youtubeLink,
+    },
+];
+---
+
+<footer
+    class="w-full bg-bg border-t-1 border-border p-2 justify-center items-center gap-2 flex text-text-muted/50 flex-col"
+>
+    <div class="max-w-screen-lg w-full p-2 flex flex-row">
+        <Logo class="max-w-35 w-[25%] object-contain opacity-20 grayscale-100" />
+        <div class="w-full grid sm:grid-cols-3 gap-4 grid-cols-1">
+            <div class="flex flex-col gap-2">
+                <h1 class="font-bold text-xl flex flex-col">UCppM</h1>
+                <span
+                    >Facultad de Informática, Universidad Complutense de Madrid
+                    Madrid, España
+                </span>
+                <a href={`mailto:${ucppmEmail}`}>
+                    {ucppmEmail}
+                </a>
+            </div>
+            <div class="flex flex-col gap-2">
+                <h1 class="font-bold text-xl flex flex-col">Documentos</h1>
+                <a href={estatutosLink}>
+                    Estatutos (Solo para cuentas de la UCM)
+                </a>
+                <a href={sociosLink}>
+                    Formulario de socios (Solo para alumnos de la FDI)
+                </a>
+            </div>
+            <div class="flex flex-col gap-0.5">
+                <h1 class="font-bold text-xl flex flex-col mb-1.5">Enlaces</h1>
+                {
+                    socialMenu.map((elem) => (
+                        <a href={elem.link} class="flex gap-2 items-center">
+                            <Image
+                                src={elem.img}
+                                alt={`${elem.name} logo`}
+                                class="h-5 w-fit icon"
+                            />
+                            {elem.name}
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+    <span class="font-semibold p-2">
+        &copy; <span id="footer-year">{year}</span> UCppM. All Rights Reserved.
+    </span>
+</footer>
+
+<style>
+    .icon {
+        filter: brightness(0) saturate(100%) invert(75%) sepia(61%) saturate(0%)
+            hue-rotate(142deg) brightness(99%) contrast(93%) opacity(50%);
+    }
+</style>
+
+<script is:inline>
+    document.getElementById("footer-year").innerText = new Date().getFullYear();
+</script>
