@@ -9,3 +9,12 @@ export const ucppmEmail = "uccpm@ucm.es";
 
 export const sociosLink = "https://docs.google.com/forms/d/e/1FAIpQLScxhUCcndJK4XCLhBpiYu1Ru-n93opxCvYIyAw4ey3_Ekqptw/viewform";
 export const estatutosLink = "https://docs.google.com/document/d/e/2PACX-1vROHkrB9b5j7XrWiFbIN7JIX4BIsuu3VArcAZMCu-ZMj4DPBuSKl6vuctlc-Ka_-bF_FxKWDhL6gIuv/pub";
+
+export const aerLink = "https://aceptaelreto.com/";
+export const kattisLink = "https://open.kattis.com/";
+export const csesLink = "https://cses.fi/problemset/";
+export const codeforcesLink = "https://codeforces.com/";
+
+export const adaByronLink = "https://ada-byron.es";
+export const cccLink = "https://register.codingcontest.org/";
+export const swercLink = "https://swerc.eu";

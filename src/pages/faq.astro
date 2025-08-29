@@ -5,7 +5,16 @@ import Acordion from "../components/Acordion.astro";
 
 import Layout from "../layouts/Layout.astro";
 
-import { discordLink } from "../data/links";
+import {
+    discordLink,
+    adaByronLink,
+    cccLink,
+    swercLink,
+    aerLink,
+    kattisLink,
+    csesLink,
+    codeforcesLink,
+} from "../data/links";
 ---
 
 <Layout>
@@ -61,19 +70,50 @@ import { discordLink } from "../data/links";
                 <p>
                     Existen muchos jueces en líneas con grandes repositorios de
                     problemas. Si estás empezando te recomendamos
-                    <a href="https://aceptaelreto.com/">¡Acepta el reto!</a>. Es un juez en línea hecho por profesores de la UCM y tiene problemas
-                    perfectos si estás empezando en el mundo de la programación competitiva.
+                    <a href={aerLink}>¡Acepta el reto!</a>. Es un juez en línea
+                    hecho por profesores de la UCM y tiene problemas perfectos
+                    si estás empezando en el mundo de la programación
+                    competitiva.
                 </p>
 
                 <p>
-                    También puedes usar <a href="https://open.kattis.com/">Kattis</a>, los problemas están ordenados por dificultad y hay desde problemas muy fáciles hasta problemas muy díficiles.
+                    También puedes usar <a href={kattisLink}>Kattis</a>, los
+                    problemas están ordenados por dificultad y hay desde
+                    problemas muy fáciles hasta problemas muy díficiles.
                 </p>
 
                 <p>
-                    Si quieres aprender nuevas técnicas también te recomendamos <a href="https://cses.fi/problemset/">CSES</a>, los problemas están ordenados por temática y sirven para aprender nuevas técnicas o darle una vuelta de tuerca a los algoritmos que ya conoces.
+                    Si quieres aprender nuevas técnicas también te recomendamos <a
+                        href={csesLink}>CSES</a
+                    >, los problemas están ordenados por temática y sirven para
+                    aprender nuevas técnicas o darle una vuelta de tuerca a los
+                    algoritmos que ya conoces.
                 </p>
                 <p>
-                    Finalmente si tienes ganas de hacer concursos métete en <a href="https://codeforces.com/">Codeforces</a>, cada semana hacen concursos virtuales. Los problemas están ordenados por dificultad y temática, aunque muchos de ellos requieren más de un instinto matemático que de un gran conocimiento de algoritmia.
+                    Finalmente si tienes ganas de hacer concursos métete en <a
+                        href={codeforcesLink}>Codeforces</a
+                    >, cada semana hacen concursos virtuales. Los problemas
+                    están ordenados por dificultad y temática, aunque muchos de
+                    ellos requieren más de un instinto matemático que de un gran
+                    conocimiento de algoritmia.
+                </p>
+            </Acordion>
+            <Acordion
+                title="¿Tengo que hacer algo para apuntarme a las actividades?"
+            >
+                <p>
+                    En general <strong>no necesitas hacer nada</strong>. Solo
+                    tienes que <strong>estar atento</strong> a las actividades y
+                    <strong>venir a las que quieras</strong>, estaremos aquí
+                    para recibirte.
+                </p>
+                <p>
+                    Hay algunas actividades que no organizamos directamente
+                    nosotros, como el <a href={adaByronLink}> Ada Byron </a>, <a
+                        href={cccLink}>Cloudflight Coding Contest</a
+                    > o el clasificatorio del <a href={swercLink}>SWERC</a>,
+                    para las que será necesario apuntarse con anterioridad. Pero
+                    no te preocupes las anunciaremos con suficiente antelación.
                 </p>
             </Acordion>
         </div>
