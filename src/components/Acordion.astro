@@ -1,0 +1,70 @@
+---
+interface Props {
+    title: string;
+    class?: string;
+}
+
+const { class: className, title } = Astro.props;
+---
+
+<div
+    class="w-full py-2.5 px-7.5 border-1 rounded-4xl border-border bg-bg flex flex-col ease-in-out group accordion"
+>
+    <div
+        class="group w-full h-fit flex flex-row items-center justify-between"
+        aria-expanded="false"
+    >
+        <span class="font-semibold text-text-muted text-2xl transition-all ease-in-out duration-200 group-hover:text-primary group-hover:text-shadow-[0px_0px_20px_var(--color-primary)] group-aria-[expanded='true']:text-primary">{title}</span>
+        <div class="flex flex-row group h-10 items-center group">
+            <span
+                class="button translate-x-[12px] group-aria-[expanded='true']:rotate-400 rotate-320"
+            ></span>
+            <span
+                class="button translate-x-[-12px] group-aria-[expanded='true']:rotate-320 rotate-400"
+            ></span>
+        </div>
+    </div>
+    <div
+        class="grid grid-rows-[0fr] duration-200 transition-all group-aria-[expanded='true']:grid-rows-[1fr]"
+    >
+        <div class="overflow-hidden my-2.5 text-lg">
+            <hr class="text-border w-[100%] p-2">
+            <slot />
+        </div>
+    </div>
+</div>
+
+<style>
+    @reference "../styles/global.css";
+
+    .button {
+        @apply block scale-x-50 h-1.5 w-8 origin-center rounded-full bg-white transition-all  ease-in-out duration-200 group-hover:bg-primary group-aria-[expanded='true']:bg-primary group-hover:drop-shadow-[0px_0px_5px_var(--color-primary)];
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const toggleButton = document.querySelectorAll(".accordion");
+        console.log(toggleButton);
+        function toggleAccordion(elem: Element) {
+            return () => {
+                const expanded = elem.getAttribute("aria-expanded") === "true";
+
+                if(!expanded) {
+                    console.log("Hello", document.querySelectorAll(".accordion[aria-expanded='true']"));
+                    document.querySelectorAll(".accordion[aria-expanded='true']").forEach((elem) => {
+                        console.log(elem);
+                        elem.setAttribute("aria-expanded", "false");
+                    })
+                }
+
+                elem.setAttribute("aria-expanded", (!expanded).toString());
+            };
+        }
+
+        toggleButton.forEach((elem) => {
+            elem.addEventListener("tap", toggleAccordion(elem));
+            elem.addEventListener("click", toggleAccordion(elem));
+        });
+    });
+</script>

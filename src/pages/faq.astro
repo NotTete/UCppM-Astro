@@ -1,0 +1,90 @@
+---
+import ContentBody from "../components/ContentBody.astro";
+import HoverableTitle from "../components/HoverableTitle.astro";
+import Acordion from "../components/Acordion.astro";
+
+import Layout from "../layouts/Layout.astro";
+
+import { discordLink } from "../data/links";
+---
+
+<Layout>
+    <ContentBody>
+        <HoverableTitle>Preguntas frecuentes</HoverableTitle>
+        <div class="flex flex-col gap-2.5 w-full p-5">
+            <Acordion title="¿Hay actividades para todos los niveles?">
+                <strong>¡Por supuesto!</strong> Intentamos hacer actividades para
+                todos los niveles, desde los más principiantes hasta los mejores
+                candidatos para el SWERC.
+            </Acordion>
+            <Acordion title="¿Cuándo se hacen actividades?">
+                <p>
+                    Intentamos hacer actividades <strong>cada semana</strong>,
+                    generalmente los <strong>viernes por la tarde</strong>. Para
+                    más información visita nuestro <a href={discordLink}
+                        >Discord</a
+                    >
+                    donde anunciamos todas las actividades.
+                </p>
+                <p>
+                    Si te vienen mal las horas no dudes en comentárnoslo. Si
+                    vemos muchas personas no pueden venir a las actividades por
+                    problemas de horario, haremos todo lo posible por moverlas
+                    de hora.
+                </p>
+            </Acordion>
+            <Acordion title="¿Qué temas se tratan en las sesiones?">
+                <p>
+                    <strong>Tratamos un poco de todos los temas</strong>. En los
+                    concursos, actividades temáticas y en los entrenamientos,
+                    hacemos problemas que seleccionamos para la ocasión y
+                    tratamos conceptos concretos, <strong
+                        >desde algoritmos básicos</strong
+                    > como búsqueda binaria o ordenación <strong
+                        >hasta estructuras de datos y técnicas avanzadas</strong
+                    > como Heavy-Light Decomposition o programación dinámica con
+                    máscara de bits.
+                </p>
+
+                <p>
+                    Cuando hacemos actividades lo hacemos por el simple hecho de
+                    pasarlo bien y aprender cosas nuevas. <strong
+                        >Si quieres ver un tema en particular o proponer alguna
+                        actividad, no dudes en proponérnoslo</strong
+                    >, seguro que nos encantará hacer una actividad entorno a
+                    ello.
+                </p>
+            </Acordion>
+            <Acordion
+                title="Quiero practicar por mi cuenta. ¿Dónde puedo encontrar problemas?"
+            >
+                <p>
+                    Existen muchos jueces en líneas con grandes repositorios de
+                    problemas. Si estás empezando te recomendamos
+                    <a href="https://aceptaelreto.com/">¡Acepta el reto!</a>. Es un juez en línea hecho por profesores de la UCM y tiene problemas
+                    perfectos si estás empezando en el mundo de la programación competitiva.
+                </p>
+
+                <p>
+                    También puedes usar <a href="https://open.kattis.com/">Kattis</a>, los problemas están ordenados por dificultad y hay desde problemas muy fáciles hasta problemas muy díficiles.
+                </p>
+
+                <p>
+                    Si quieres aprender nuevas técnicas también te recomendamos <a href="https://cses.fi/problemset/">CSES</a>, los problemas están ordenados por temática y sirven para aprender nuevas técnicas o darle una vuelta de tuerca a los algoritmos que ya conoces.
+                </p>
+                <p>
+                    Finalmente si tienes ganas de hacer concursos métete en <a href="https://codeforces.com/">Codeforces</a>, cada semana hacen concursos virtuales. Los problemas están ordenados por dificultad y temática, aunque muchos de ellos requieren más de un instinto matemático que de un gran conocimiento de algoritmia.
+                </p>
+            </Acordion>
+        </div>
+    </ContentBody>
+
+    <style>
+        @reference "../styles/global.css";
+
+        a,
+        strong {
+            @apply font-bold text-primary ease-in-out duration-300 transition-all hover-always:text-shadow-[0px_0px_5px_var(--color-primary)];
+        }
+    </style>
+</Layout>

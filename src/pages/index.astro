@@ -14,15 +14,15 @@ import URJCImage from "../assets/urjc.webp";
 import CodeImage from "../assets/kmp-code.webp";
 import NavidadImage from "../assets/concurso_navidad.webp";
 import AdaByronImage from "../assets/adabyron.webp";
+import ContentBody from "../components/ContentBody.astro";
+import HoverableTitle from "../components/HoverableTitle.astro";
 ---
 
 <Layout>
     <a class="absolute top-0" id="home"></a>
     <HomeTitle />
-    <div
-        class="w-full flex flex-col items-center justify-center my-20 lg:max-w-5xl md:max-w-3xl m-auto"
-    >
-        <h1 class="bento-title">¿Quiénes somos?</h1>
+    <ContentBody>
+        <HoverableTitle>¿Quiénes somos?</HoverableTitle>
         <a class="relative top-[-175px]" style="visibility: hidden;" id="about"
         ></a>
         <BentoGrid
@@ -88,7 +88,7 @@ import AdaByronImage from "../assets/adabyron.webp";
             </BentoText>
         </BentoGrid>
 
-        <h1 class="bento-title">¿Qué problemas resolvemos?</h1>
+        <HoverableTitle>¿Qué problemas resolvemos?</HoverableTitle>
         <BentoGrid
             grid={{
                 lg: [2, 4],
@@ -151,7 +151,7 @@ import AdaByronImage from "../assets/adabyron.webp";
             </BentoText>
         </BentoGrid>
 
-        <h1 class="bento-title">¿Por qué deberías unirte?</h1>
+        <HoverableTitle>¿Por qué deberías unirte?</HoverableTitle>
         <BentoGrid
             grid={{
                 lg: [5, 4],
@@ -224,7 +224,7 @@ import AdaByronImage from "../assets/adabyron.webp";
                 > y <a href={sociosLink}><strong>hazte socio.</strong></a>
             </span>
         </div>
-    </div>
+    </ContentBody>
 </Layout>
 
 <style>
@@ -232,9 +232,5 @@ import AdaByronImage from "../assets/adabyron.webp";
 
     strong {
         @apply text-primary ease-in-out duration-300 transition-all hover-always:text-shadow-[0px_0px_5px_var(--color-primary)];
-    }
-
-    .bento-title {
-        @apply font-bold text-5xl sm:text-6xl py-5 text-center ease-in-out duration-300 transition-all hover:scale-105 hover:text-shadow-[0px_0px_20px_var(--color-primary)] active:scale-105 hover-always:text-shadow-[0px_0px_20px_var(--color-primary)] hover-always:text-primary;
     }
 </style>
